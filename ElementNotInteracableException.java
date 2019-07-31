@@ -21,8 +21,11 @@ public class ElementNotInteracableException {
 		
 		WebDriver driver = new ChromeDriver();
 		
-		driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		//Both are dynamic waits
+		driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS); // maximum time to load page if it loads before that then rest of the time will ignored
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS); // maximum time to load all elements of a page, if it loads before that then rest of the time will ignored
+		
+		
 		driver.manage().window().maximize();
 		
 		driver.get("http://www.vodacom.co.za");
@@ -38,12 +41,15 @@ public class ElementNotInteracableException {
 		action.moveToElement(user).click().build().perform();
 		action.moveToElement(user).sendKeys("0794463558").build().perform();
 		
+		
+		
 		//It is used if the given WebElement is not visible/not interactable/not able to perform operations
 		WebElement pass = driver.findElement(By.xpath("//input[@id='login_password']"));
 		action.moveToElement(pass).click().build().perform();
 		action.moveToElement(pass).sendKeys("Vodacom#100").build().perform();
 		
 		//waiting till button enabled
+		//Dynamic wait
 		WebDriverWait wait = new WebDriverWait(driver,20);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//form[@id='login-form']/div/a[text()='Log in']")));
 		
