@@ -15,7 +15,7 @@ public class ElementNotInteracableException {
 
 	public static void main(String[] args)throws Exception {
 		
-		System.setProperty("webdriver.chrome.driver","C:\\Users\\akshay.shete\\Downloads\\Selenium Jars & Drivers\\chromedriver_win32\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"\\chromedriver.exe");
 		
 		//WebDriver driver = new HtmlUnitDriver(); //HeadLess Browser / Ghost Browser. It won't work if script contains cursor movement/element movement etc.
 		
@@ -34,7 +34,7 @@ public class ElementNotInteracableException {
 		
 		driver.findElement(By.xpath("//a[text()='Log in']")).click();
 		
-
+		Thread.sleep(2000);
 		// It is used if the given WebElement is not visible/not interactable/not able to perform operations
 		WebElement user = driver.findElement(By.xpath("//input[@id='login_username']"));
 		Actions action = new Actions(driver);
@@ -42,7 +42,7 @@ public class ElementNotInteracableException {
 		action.moveToElement(user).sendKeys("0794463558").build().perform();
 		
 		
-		
+		Thread.sleep(2000);
 		//It is used if the given WebElement is not visible/not interactable/not able to perform operations
 		WebElement pass = driver.findElement(By.xpath("//input[@id='login_password']"));
 		action.moveToElement(pass).click().build().perform();
