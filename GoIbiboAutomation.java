@@ -8,6 +8,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.Select;
 
 
@@ -15,8 +16,16 @@ public class GoIbiboAutomation {
 
 	public static void main(String[] args)throws Exception {
 		System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"\\chromedriver.exe");
-
-
+		
+		//To use chrome in headless mode.
+		//1. Make sure to increase window size as by default its mobile size window so sometime may element not found.
+		//2. Then use headless arugemnt.
+		
+		/*ChromeOptions opt = new ChromeOptions();
+		opt.addArguments("window-size=1400,800");
+		opt.addArguments("headless");
+		WebDriver driver = new ChromeDriver(opt);*/
+		
 		WebDriver driver = new ChromeDriver();
 		driver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS); // maximum time to load page if it loads before that then rest of the time will ignored
 		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS); // maximum time to load all elements of a page, if it loads before that then rest of the time will ignored
@@ -44,6 +53,8 @@ public class GoIbiboAutomation {
 		selectTravellerAndClass(driver,noOfTraveller,noOfChildren,flightClass);
 
 		driver.findElement(By.id("gi_search_btn")).click();
+		System.out.println("Page Searched Succesfully");
+		//System.out.println("HeadLess Target Achieved");
 
 	}
 
