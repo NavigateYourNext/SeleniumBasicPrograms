@@ -116,4 +116,7 @@ public class JavaScriptExecutorMethods {
 		jse.executeScript("arguments[0].scrollIntoView(true);", element);
 	}
 	
+	//To handle ANGULAR OBJECTS use JAVASCRIPTEXECUTOR as follows: -
+	//Below example is to get value from textbox
+	//jse.executeScript("return angular.element(document.getElementById('')).scope().<copy-paste-"ng-model" attribute value here>).toString();
 }
